@@ -1,21 +1,11 @@
 export type SymptomId =
-  | 'fatigue'
-  | 'bloating'
-  | 'headache'
-  | 'cold'
-  | 'joint-pain'
-  | 'high-stress'
-  | 'poor-sleep'
-  | 'brain-fog'
-  | 'pms-symptoms'
-  | 'immune-support'
-  | 'recovery-support'
-  | 'inflammation'
-  | 'constipation'
-  | 'low-focus'
-  | 'low-mood'
-  | 'low-appetite'
-  | 'weakness'
+  | 'energy-fatigue'
+  | 'cognitive-performance'
+  | 'stress-mood'
+  | 'sleep-recovery'
+  | 'immune-illness'
+  | 'inflammation-pain'
+  | 'gut-health'
 
 export interface Symptom {
   id: SymptomId
@@ -83,89 +73,39 @@ export const withIngredientEmoji = (ingredient: string) => {
 
 export const symptoms: Symptom[] = [
   {
-    id: 'fatigue',
-    label: 'Low energy / fatigue',
-    description: 'Aim for iron-rich and B-vitamin supportive ingredients.',
+    id: 'energy-fatigue',
+    label: 'Energy & fatigue',
+    description: 'Focus on iron, B12, and steady-energy nutrients.',
   },
   {
-    id: 'bloating',
-    label: 'Bloating / indigestion',
-    description: 'Favor digestion-friendly herbs and gentle fiber.',
+    id: 'cognitive-performance',
+    label: 'Cognitive performance',
+    description: 'Prioritize choline, omega-3s, folate, and B-vitamin support.',
   },
   {
-    id: 'headache',
-    label: 'Frequent headache',
-    description: 'Hydrating and magnesium-rich ingredients may help.',
+    id: 'stress-mood',
+    label: 'Stress & mood',
+    description: 'Steady blood sugar, magnesium, and calming nutrients are emphasized.',
   },
   {
-    id: 'cold',
-    label: 'Cold symptoms',
-    description: 'Warming and immune-supportive foods are prioritized.',
+    id: 'sleep-recovery',
+    label: 'Sleep & recovery',
+    description: 'Support sleep quality and tissue recovery with balanced nutrients.',
   },
   {
-    id: 'joint-pain',
-    label: 'Joint discomfort',
-    description: 'Lean into anti-inflammatory ingredients.',
+    id: 'immune-illness',
+    label: 'Immune & illness',
+    description: 'Vitamin C, carotenoids, hydration, and supportive minerals are prioritized.',
   },
   {
-    id: 'high-stress',
-    label: 'High stress',
-    description: 'Choose calming, blood sugar-steadying recipes.',
+    id: 'inflammation-pain',
+    label: 'Inflammation & pain',
+    description: 'Emphasize anti-inflammatory fats and antioxidant-rich ingredients.',
   },
   {
-    id: 'poor-sleep',
-    label: 'Poor sleep',
-    description: 'Magnesium and tryptophan-friendly ingredients can support rest.',
-  },
-  {
-    id: 'brain-fog',
-    label: 'Brain fog',
-    description: 'Nutrient-dense foods and choline-focused options are prioritized.',
-  },
-  {
-    id: 'pms-symptoms',
-    label: 'PMS symptoms',
-    description: 'Magnesium and micronutrient-rich foods are emphasized.',
-  },
-  {
-    id: 'immune-support',
-    label: 'Immune support',
-    description: 'Vitamin C and carotenoid-rich ingredients are ranked higher.',
-  },
-  {
-    id: 'recovery-support',
-    label: 'General recovery',
-    description: 'Broad micronutrient and steady-energy foods are prioritized.',
-  },
-  {
-    id: 'inflammation',
-    label: 'Inflammation',
-    description: 'Anti-inflammatory fats and antioxidant foods are highlighted.',
-  },
-  {
-    id: 'constipation',
-    label: 'Constipation',
-    description: 'Fiber-forward and motility-supportive choices are surfaced.',
-  },
-  {
-    id: 'low-focus',
-    label: 'Low focus',
-    description: 'Steady-energy and choline-rich ingredients are prioritized.',
-  },
-  {
-    id: 'low-mood',
-    label: 'Low mood',
-    description: 'Omega-3 and magnesium-containing ingredients are emphasized.',
-  },
-  {
-    id: 'low-appetite',
-    label: 'Low appetite',
-    description: 'Easy-to-eat nutrient-dense options are suggested.',
-  },
-  {
-    id: 'weakness',
-    label: 'Weakness / low energy',
-    description: 'Iron and B-vitamin-supportive foods are surfaced first.',
+    id: 'gut-health',
+    label: 'Digestion & gut health',
+    description: 'Blend gentle digestive support, motility support, and gut-soothing foods.',
   },
 ]
 
@@ -173,114 +113,70 @@ export const getSymptomLabel = (symptomId: SymptomId) =>
   symptoms.find((symptom) => symptom.id === symptomId)?.label ?? symptomId
 
 export const symptomIngredientMap: Record<SymptomId, IngredientMatch[]> = {
-  fatigue: [
+  'energy-fatigue': [
+    { ingredient: 'liver', benefit: 'high-impact B12 + iron support' },
     { ingredient: 'spinach', benefit: 'iron + folate support' },
     { ingredient: 'lentils', benefit: 'iron + fiber support' },
+    { ingredient: 'egg yolks', benefit: 'B-vitamin and choline support' },
     { ingredient: 'pumpkin seeds', benefit: 'magnesium + zinc' },
-    { ingredient: 'eggs', benefit: 'B-vitamin support' },
     { ingredient: 'kale', benefit: 'micronutrient support' },
     { ingredient: 'sardines', benefit: 'B12 + omega-3 support' },
     { ingredient: 'sweet potatoes', benefit: 'steady fuel support' },
+    { ingredient: 'mango', benefit: 'easy carb + recovery support' },
   ],
-  bloating: [
-    { ingredient: 'ginger', benefit: 'digestive comfort' },
-    { ingredient: 'fennel', benefit: 'gut-soothing compounds' },
-    { ingredient: 'mint', benefit: 'post-meal comfort' },
-    { ingredient: 'yogurt', benefit: 'probiotic support' },
+  'cognitive-performance': [
+    { ingredient: 'egg yolks', benefit: 'choline + B-vitamin support' },
+    { ingredient: 'sardines', benefit: 'omega-3 + B12 support' },
+    { ingredient: 'liver', benefit: 'B12 density support' },
+    { ingredient: 'kale', benefit: 'folate support' },
+    { ingredient: 'oats', benefit: 'steady-energy support' },
   ],
-  headache: [
-    { ingredient: 'banana', benefit: 'potassium support' },
-    { ingredient: 'spinach', benefit: 'magnesium support' },
-    { ingredient: 'cucumber', benefit: 'hydration support' },
-    { ingredient: 'oats', benefit: 'steady energy release' },
-  ],
-  cold: [
-    { ingredient: 'garlic', benefit: 'immune-supportive compounds' },
-    { ingredient: 'turmeric', benefit: 'warming anti-inflammatory support' },
-    { ingredient: 'lemon', benefit: 'vitamin C support' },
-    { ingredient: 'chicken broth', benefit: 'warm hydration + minerals' },
-    { ingredient: 'red bell peppers', benefit: 'vitamin C-rich support' },
-    { ingredient: 'mango', benefit: 'vitamins A + C support' },
-  ],
-  'joint-pain': [
-    { ingredient: 'salmon', benefit: 'omega-3 fatty acids' },
-    { ingredient: 'turmeric', benefit: 'curcumin support' },
-    { ingredient: 'olive oil', benefit: 'polyphenol-rich fat source' },
-    { ingredient: 'berries', benefit: 'antioxidant support' },
-    { ingredient: 'sardines', benefit: 'omega-3 + vitamin D support' },
-  ],
-  'high-stress': [
+  'stress-mood': [
+    { ingredient: 'sunflower seeds', benefit: 'magnesium + vitamin E support' },
     { ingredient: 'dark chocolate', benefit: 'polyphenols + mood support' },
     { ingredient: 'oats', benefit: 'steady glucose support' },
     { ingredient: 'chickpeas', benefit: 'B6 + fiber support' },
     { ingredient: 'chamomile', benefit: 'calming ritual support' },
+    { ingredient: 'sardines', benefit: 'omega-3 support' },
   ],
-  'poor-sleep': [
+  'sleep-recovery': [
+    { ingredient: 'kiwi', benefit: 'sleep-quality + motility support' },
+    { ingredient: 'tart cherry', benefit: 'melatonin pathway support' },
     { ingredient: 'almonds', benefit: 'magnesium support' },
-    { ingredient: 'kiwi', benefit: 'sleep-quality support' },
     { ingredient: 'oats', benefit: 'serotonin precursor support' },
-    { ingredient: 'tart cherry', benefit: 'melatonin support' },
+    { ingredient: 'kale', benefit: 'recovery micronutrient support' },
+    { ingredient: 'sweet potatoes', benefit: 'glycogen recovery support' },
+    { ingredient: 'sunflower seeds', benefit: 'vitamin E support' },
   ],
-  'brain-fog': [
-    { ingredient: 'egg yolks', benefit: 'choline + B-vitamin support' },
-    { ingredient: 'liver', benefit: 'B12 + iron density support' },
-    { ingredient: 'kale', benefit: 'folate support' },
-    { ingredient: 'sardines', benefit: 'omega-3 + B12 support' },
-  ],
-  'pms-symptoms': [
-    { ingredient: 'kale', benefit: 'magnesium + folate support' },
-    { ingredient: 'chard', benefit: 'magnesium-rich support' },
-    { ingredient: 'sunflower seeds', benefit: 'vitamin E + magnesium support' },
-    { ingredient: 'kiwi', benefit: 'fiber + vitamin C support' },
-  ],
-  'immune-support': [
-    { ingredient: 'red bell peppers', benefit: 'high vitamin C support' },
+  'immune-illness': [
+    { ingredient: 'red bell peppers', benefit: 'very high vitamin C support' },
     { ingredient: 'kiwi', benefit: 'vitamin C + fiber support' },
     { ingredient: 'sweet potatoes', benefit: 'beta-carotene support' },
     { ingredient: 'mango', benefit: 'vitamins A + C support' },
+    { ingredient: 'lemon', benefit: 'hydration + vitamin C support' },
+    { ingredient: 'garlic', benefit: 'immune-supportive compounds' },
+    { ingredient: 'chicken broth', benefit: 'warm hydration + minerals' },
   ],
-  'recovery-support': [
-    { ingredient: 'kale', benefit: 'broad micronutrient support' },
-    { ingredient: 'chard', benefit: 'magnesium + potassium support' },
-    { ingredient: 'sunflower seeds', benefit: 'vitamin E support' },
-    { ingredient: 'sweet potatoes', benefit: 'steady carb support' },
-    { ingredient: 'sardines', benefit: 'omega-3 + B12 support' },
-  ],
-  inflammation: [
+  'inflammation-pain': [
     { ingredient: 'sardines', benefit: 'omega-3 anti-inflammatory support' },
-    { ingredient: 'olive oil', benefit: 'polyphenol support' },
+    { ingredient: 'salmon', benefit: 'omega-3 fatty acids' },
+    { ingredient: 'turmeric', benefit: 'curcumin support' },
+    { ingredient: 'olive oil', benefit: 'polyphenol-rich fat source' },
     { ingredient: 'berries', benefit: 'antioxidant support' },
     { ingredient: 'kale', benefit: 'polyphenol-rich greens support' },
+    { ingredient: 'ginger', benefit: 'warming anti-inflammatory support' },
   ],
-  constipation: [
+  'gut-health': [
+    { ingredient: 'ginger', benefit: 'digestive comfort' },
+    { ingredient: 'fennel', benefit: 'gut-soothing compounds' },
+    { ingredient: 'mint', benefit: 'post-meal comfort' },
+    { ingredient: 'yogurt', benefit: 'probiotic support' },
+    { ingredient: 'chard', benefit: 'magnesium-rich support' },
     { ingredient: 'kiwi', benefit: 'motility + fiber support' },
     { ingredient: 'oats', benefit: 'soluble fiber support' },
-    { ingredient: 'chard', benefit: 'fiber + magnesium support' },
-    { ingredient: 'yogurt', benefit: 'gut flora support' },
-  ],
-  'low-focus': [
-    { ingredient: 'egg yolks', benefit: 'choline support' },
-    { ingredient: 'sardines', benefit: 'omega-3 + B12 support' },
-    { ingredient: 'oats', benefit: 'steady-energy support' },
-    { ingredient: 'kale', benefit: 'folate support' },
-  ],
-  'low-mood': [
-    { ingredient: 'sardines', benefit: 'omega-3 support' },
-    { ingredient: 'dark chocolate', benefit: 'polyphenol support' },
-    { ingredient: 'sunflower seeds', benefit: 'magnesium + vitamin E support' },
-    { ingredient: 'oats', benefit: 'steady-energy support' },
-  ],
-  'low-appetite': [
-    { ingredient: 'mango', benefit: 'easy calories + vitamins support' },
-    { ingredient: 'sweet potatoes', benefit: 'gentle carb support' },
     { ingredient: 'banana', benefit: 'easy-to-digest energy support' },
-    { ingredient: 'yogurt', benefit: 'light protein + probiotic support' },
-  ],
-  weakness: [
-    { ingredient: 'liver', benefit: 'iron + B12 density support' },
-    { ingredient: 'egg yolks', benefit: 'B-vitamin support' },
-    { ingredient: 'lentils', benefit: 'iron + fiber support' },
-    { ingredient: 'sweet potatoes', benefit: 'steady-energy support' },
+    { ingredient: 'mango', benefit: 'easy calories + vitamins support' },
+    { ingredient: 'cucumber', benefit: 'hydration support' },
   ],
 }
 

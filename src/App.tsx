@@ -136,28 +136,10 @@ function App() {
       {isAnimating ? (
         <div className="doctor-chef-overlay" role="status" aria-live="polite">
           <div className="doctor-chef-stage">
-            <div className="stage-orbit orbit-a" aria-hidden="true"></div>
-            <div className="stage-orbit orbit-b" aria-hidden="true"></div>
             <div className="doctor-chef-avatar big-avatar" aria-hidden="true">
               <div className="avatar-half chef-half">🍳</div>
               <div className="avatar-half doctor-half">🩺</div>
               <div className="avatar-hat"></div>
-            </div>
-            <div className="doctor-chef-body" aria-hidden="true">
-              <div className="emoji-body">🧑‍🍳🩺</div>
-            </div>
-            <div className="magic-pot" aria-hidden="true">
-              <div className="pot-lid"></div>
-              <div className="pot-body"></div>
-              <span className="steam steam-1"></span>
-              <span className="steam steam-2"></span>
-              <span className="steam steam-3"></span>
-            </div>
-            <div className="flair-ingredients" aria-hidden="true">
-              <span className="flair-chip chip-a"></span>
-              <span className="flair-chip chip-b"></span>
-              <span className="flair-chip chip-c"></span>
-              <span className="flair-chip chip-d"></span>
             </div>
             <p className="anim-title">Doctor Chef is preparing your plan...</p>
             <p className="anim-subtitle">Calibrating ingredients and remedy dishes</p>

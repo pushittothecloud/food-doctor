@@ -161,15 +161,18 @@
 .avatar-half {
   display: grid;
   place-items: center;
-  font-size: clamp(2.2rem, 7vw, 3.8rem);
 }
 
 .chef-half {
-  background: rgba(245, 159, 58, 0.28);
+  background:
+    linear-gradient(to bottom, #f2b37f 0 58%, #d97d44 58% 62%, #f2b37f 62% 100%),
+    rgba(245, 159, 58, 0.28);
 }
 
 .doctor-half {
-  background: rgba(15, 109, 143, 0.23);
+  background:
+    linear-gradient(to bottom, #f2b37f 0 58%, #95c4d0 58% 100%),
+    rgba(15, 109, 143, 0.23);
 }
 
 .avatar-hat {
@@ -215,10 +218,93 @@
 
 .doctor-chef-body {
   margin-top: 0.2rem;
-  display: inline-flex;
-  gap: 0.9rem;
-  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  display: grid;
+  place-items: center;
   animation: sway 1.1s ease-in-out infinite;
+}
+
+.figure-core {
+  position: relative;
+  width: clamp(160px, 24vw, 205px);
+  height: clamp(190px, 30vw, 240px);
+}
+
+.figure-coat {
+  position: absolute;
+  inset: 26px 32px 36px;
+  border: 4px solid #7b8a97;
+  border-radius: 18px 18px 12px 12px;
+  background: linear-gradient(to right, #eef3f8 0 50%, #d7e6ef 50% 100%);
+}
+
+.figure-lapel {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  width: 30px;
+  height: 70px;
+  transform: translateX(-50%);
+  background: linear-gradient(to right, #d97d44 0 50%, #2b7f96 50% 100%);
+  border-radius: 8px;
+}
+
+.figure-stethoscope {
+  position: absolute;
+  right: 56px;
+  top: 72px;
+  width: 30px;
+  height: 48px;
+  border: 4px solid #2b7f96;
+  border-top: 0;
+  border-radius: 0 0 18px 18px;
+}
+
+.figure-stethoscope::after {
+  content: '';
+  position: absolute;
+  right: 5px;
+  bottom: -9px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2b7f96;
+}
+
+.figure-arm {
+  position: absolute;
+  top: 88px;
+  width: 36px;
+  height: 72px;
+  border: 4px solid #7b8a97;
+  background: linear-gradient(to bottom, #e7edf4 0 60%, #f2b37f 60% 100%);
+}
+
+.arm-left {
+  left: 6px;
+  border-radius: 12px 0 10px 14px;
+}
+
+.arm-right {
+  right: 6px;
+  border-radius: 0 12px 14px 10px;
+}
+
+.figure-leg {
+  position: absolute;
+  bottom: 0;
+  width: 34px;
+  height: 44px;
+  border: 4px solid #7b8a97;
+  border-radius: 10px;
+  background: #dce6ee;
+}
+
+.leg-left {
+  left: 56px;
+}
+
+.leg-right {
+  right: 56px;
 }
 
 .anim-title {

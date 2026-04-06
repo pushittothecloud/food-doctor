@@ -131,13 +131,20 @@ function App() {
         <div className="doctor-chef-overlay" role="status" aria-live="polite">
           <div className="doctor-chef-stage">
             <div className="doctor-chef-avatar big-avatar" aria-hidden="true">
-              <div className="avatar-half chef-half">🍳</div>
-              <div className="avatar-half doctor-half">🩺</div>
+              <div className="avatar-half chef-half"></div>
+              <div className="avatar-half doctor-half"></div>
               <div className="avatar-hat"></div>
             </div>
             <div className="doctor-chef-body" aria-hidden="true">
-              <span className="body-left">🧑‍🍳</span>
-              <span className="body-right">🩺</span>
+              <div className="figure-core">
+                <div className="figure-coat"></div>
+                <div className="figure-lapel"></div>
+                <div className="figure-stethoscope"></div>
+                <div className="figure-arm arm-left"></div>
+                <div className="figure-arm arm-right"></div>
+                <div className="figure-leg leg-left"></div>
+                <div className="figure-leg leg-right"></div>
+              </div>
             </div>
             <p className="anim-title">Doctor Chef is preparing your plan...</p>
             <p className="anim-subtitle">Calibrating ingredients and remedy dishes</p>
@@ -171,7 +178,7 @@ function App() {
 
       <section className="panel">
         <div className="panel-heading">
-          <h2>Prescription ingredients</h2>
+          <h2>Prescribed ingredients</h2>
           <p>
             Ingredients are ranked by how many selected symptoms they can support.
           </p>

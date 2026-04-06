@@ -184,87 +184,16 @@
 .avatar-half {
   display: grid;
   place-items: center;
+  font-size: clamp(2.2rem, 7vw, 3.8rem);
+  line-height: 1;
 }
 
 .chef-half {
-  background: linear-gradient(to bottom, #f2b37f 0 58%, #d68046 58% 65%, #e8eef5 65% 100%);
+  background: rgba(245, 159, 58, 0.28);
 }
 
 .doctor-half {
-  background: linear-gradient(to bottom, #f2b37f 0 58%, #8dbac8 58% 100%);
-}
-
-.avatar-features {
-  position: absolute;
-  inset: 0;
-}
-
-.eye {
-  position: absolute;
-  top: 40%;
-  width: clamp(10px, 1.8vw, 14px);
-  height: clamp(10px, 1.8vw, 14px);
-  background: #0f1f2d;
-  border-radius: 2px;
-}
-
-.eye-left {
-  left: 31%;
-}
-
-.eye-right {
-  right: 31%;
-}
-
-.brow {
-  position: absolute;
-  top: 34%;
-  width: clamp(14px, 2.3vw, 19px);
-  height: 4px;
-  background: #3c4e5f;
-  border-radius: 3px;
-}
-
-.brow-left {
-  left: 27%;
-}
-
-.brow-right {
-  right: 27%;
-}
-
-.nose {
-  position: absolute;
-  top: 49%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: clamp(7px, 1.2vw, 10px);
-  height: clamp(9px, 1.5vw, 12px);
-  background: #d78e58;
-  border-radius: 3px;
-}
-
-.smile {
-  position: absolute;
-  top: 61%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: clamp(26px, 4.2vw, 36px);
-  height: clamp(8px, 1.4vw, 10px);
-  border-bottom: 4px solid #884624;
-  border-radius: 0 0 10px 10px;
-}
-
-.split-beard {
-  position: absolute;
-  left: 50%;
-  top: 63%;
-  transform: translateX(-50%);
-  width: 52%;
-  height: 25%;
-  background: linear-gradient(to right, #be5f34 0 50%, #8fa7b6 50% 100%);
-  clip-path: polygon(6% 0, 94% 0, 100% 50%, 72% 100%, 28% 100%, 0 50%);
-  opacity: 0.9;
+  background: rgba(15, 109, 143, 0.23);
 }
 
 .avatar-hat {
@@ -313,6 +242,12 @@
   display: grid;
   place-items: center;
   animation: sway 1.1s ease-in-out infinite;
+}
+
+.emoji-body {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  letter-spacing: 0.15rem;
+  line-height: 1;
 }
 
 .figure-core {

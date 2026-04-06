@@ -139,29 +139,12 @@ function App() {
             <div className="stage-orbit orbit-a" aria-hidden="true"></div>
             <div className="stage-orbit orbit-b" aria-hidden="true"></div>
             <div className="doctor-chef-avatar big-avatar" aria-hidden="true">
-              <div className="avatar-half chef-half"></div>
-              <div className="avatar-half doctor-half"></div>
-              <div className="avatar-features">
-                <span className="eye eye-left"></span>
-                <span className="eye eye-right"></span>
-                <span className="brow brow-left"></span>
-                <span className="brow brow-right"></span>
-                <span className="nose"></span>
-                <span className="smile"></span>
-                <span className="split-beard"></span>
-              </div>
+              <div className="avatar-half chef-half">🍳</div>
+              <div className="avatar-half doctor-half">🩺</div>
               <div className="avatar-hat"></div>
             </div>
             <div className="doctor-chef-body" aria-hidden="true">
-              <div className="figure-core">
-                <div className="figure-coat"></div>
-                <div className="figure-lapel"></div>
-                <div className="figure-stethoscope"></div>
-                <div className="figure-arm arm-left"></div>
-                <div className="figure-arm arm-right"></div>
-                <div className="figure-leg leg-left"></div>
-                <div className="figure-leg leg-right"></div>
-              </div>
+              <div className="emoji-body">🧑‍🍳🩺</div>
             </div>
             <div className="magic-pot" aria-hidden="true">
               <div className="pot-lid"></div>

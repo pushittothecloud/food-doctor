@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { RecipeCard } from './components/RecipeCard'
 import { SymptomPicker } from './components/SymptomPicker'
 import { symptoms, type SymptomId } from './data/catalog'
@@ -10,15 +10,17 @@ import './App.css'
 
 function App() {
   const [selectedSymptoms, setSelectedSymptoms] = useState<SymptomId[]>([])
+  const [submittedSymptoms, setSubmittedSymptoms] = useState<SymptomId[]>([])
+  const [isAnimating, setIsAnimating] = useState(false)
 
   const ingredientRecommendations = useMemo(
-    () => getIngredientRecommendations(selectedSymptoms),
-    [selectedSymptoms],
+    () => getIngredientRecommendations(submittedSymptoms),
+    [submittedSymptoms],
   )
 
   const recipeRecommendations = useMemo(
-    () => getRecipeRecommendations(selectedSymptoms),
-    [selectedSymptoms],
+    () => getRecipeRecommendations(submittedSymptoms),
+    [submittedSymptoms],
   )
 
   const toggleSymptom = (symptomId: SymptomId) => {
@@ -28,6 +30,56 @@ function App() {
         : [...current, symptomId],
     )
   }
+
+  const runPrescription = () => {
+    if (selectedSymptoms.length === 0) {
+      return
+    }
+
+    setSubmittedSymptoms(selectedSymptoms)
+    setIsAnimating(true)
+  }
+
+  useEffect(() => {
+    if (!isAnimating) {
+      return
+    }
+
+    const timer = window.setTimeout(() => {
+      setIsAnimating(false)
+    }, 1350)
+
+    return () => {
+      window.clearTimeout(timer)
+    }
+  }, [isAnimating])
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Enter' || event.shiftKey || event.ctrlKey || event.metaKey) {
+        return
+      }
+
+      const target = event.target as HTMLElement | null
+      if (
+        target &&
+        (target.tagName === 'INPUT' ||
+          target.tagName === 'TEXTAREA' ||
+          target.tagName === 'SELECT' ||
+          target.isContentEditable)
+      ) {
+        return
+      }
+
+      event.preventDefault()
+      runPrescription()
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => {
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [selectedSymptoms])
 
   return (
     <main className="app-shell">
@@ -44,11 +96,39 @@ function App() {
         </div>
       </header>
 
-      <SymptomPicker
-        symptoms={symptoms}
-        selectedSymptoms={selectedSymptoms}
-        onToggleSymptom={toggleSymptom}
-      />
+      {isAnimating ? (
+        <div className="doctor-chef-animation" role="status" aria-live="polite">
+          <div className="doctor-chef-avatar" aria-hidden="true"></div>
+          <div>
+            <p className="anim-title">Doctor Chef is preparing your plan...</p>
+            <p className="anim-subtitle">Calibrating ingredients and remedy dishes</p>
+          </div>
+        </div>
+      ) : null}
+
+      <form
+        className="intake-form"
+        onSubmit={(event) => {
+          event.preventDefault()
+          runPrescription()
+        }}
+      >
+        <SymptomPicker
+          symptoms={symptoms}
+          selectedSymptoms={selectedSymptoms}
+          onToggleSymptom={toggleSymptom}
+        />
+        <div className="submit-row">
+          <button
+            className="rx-submit"
+            type="submit"
+            disabled={selectedSymptoms.length === 0}
+          >
+            Prescribe dishes
+          </button>
+          <p className="submit-hint">Shortcut: press Enter after selecting symptoms</p>
+        </div>
+      </form>
 
       <section className="panel">
         <div className="panel-heading">

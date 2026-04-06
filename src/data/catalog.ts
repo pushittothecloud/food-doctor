@@ -27,6 +27,38 @@ export interface Recipe {
   directions: string[]
 }
 
+export const ingredientEmojiMap: Record<string, string> = {
+  almonds: '🌰',
+  banana: '🍌',
+  berries: '🫐',
+  chamomile: '🌼',
+  'chicken broth': '🍲',
+  chickpeas: '🧆',
+  cucumber: '🥒',
+  'dark chocolate': '🍫',
+  eggs: '🥚',
+  fennel: '🌿',
+  garlic: '🧄',
+  ginger: '🫚',
+  kiwi: '🥝',
+  lemon: '🍋',
+  lentils: '🫘',
+  mint: '🌱',
+  oats: '🌾',
+  'olive oil': '🫒',
+  'pumpkin seeds': '🎃',
+  salmon: '🐟',
+  spinach: '🥬',
+  'tart cherry': '🍒',
+  turmeric: '🟡',
+  yogurt: '🥣',
+}
+
+export const withIngredientEmoji = (ingredient: string) => {
+  const emoji = ingredientEmojiMap[ingredient] ?? '🥗'
+  return `${emoji} ${ingredient}`
+}
+
 export const symptoms: Symptom[] = [
   {
     id: 'fatigue',

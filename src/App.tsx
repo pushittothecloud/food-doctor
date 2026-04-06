@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
+import { RecipeDetailPage } from './components/RecipeDetailPage'
 import { RecipeCard } from './components/RecipeCard'
 import { SymptomPicker } from './components/SymptomPicker'
-import { symptoms, type SymptomId } from './data/catalog'
+import { recipes, symptoms, type SymptomId, withIngredientEmoji } from './data/catalog'
 import {
   getIngredientRecommendations,
   getRecipeRecommendations,
@@ -12,6 +13,21 @@ function App() {
   const [selectedSymptoms, setSelectedSymptoms] = useState<SymptomId[]>([])
   const [submittedSymptoms, setSubmittedSymptoms] = useState<SymptomId[]>([])
   const [isAnimating, setIsAnimating] = useState(false)
+  const [hash, setHash] = useState(window.location.hash)
+
+  const recipeRouteId = useMemo(() => {
+    const prefix = '#/recipe/'
+    if (!hash.startsWith(prefix)) {
+      return null
+    }
+
+    return decodeURIComponent(hash.slice(prefix.length))
+  }, [hash])
+
+  const openedRecipe = useMemo(
+    () => recipes.find((recipe) => recipe.id === recipeRouteId) ?? null,
+    [recipeRouteId],
+  )
 
   const ingredientRecommendations = useMemo(
     () => getIngredientRecommendations(submittedSymptoms),
@@ -55,6 +71,17 @@ function App() {
   }, [isAnimating])
 
   useEffect(() => {
+    const onHashChange = () => {
+      setHash(window.location.hash)
+    }
+
+    window.addEventListener('hashchange', onHashChange)
+    return () => {
+      window.removeEventListener('hashchange', onHashChange)
+    }
+  }, [])
+
+  useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key !== 'Enter' || event.shiftKey || event.ctrlKey || event.metaKey) {
         return
@@ -81,6 +108,10 @@ function App() {
     }
   }, [selectedSymptoms])
 
+  if (recipeRouteId) {
+    return <RecipeDetailPage recipe={openedRecipe} />
+  }
+
   return (
     <main className="app-shell">
       <header className="hero">
@@ -98,7 +129,11 @@ function App() {
 
       {isAnimating ? (
         <div className="doctor-chef-animation" role="status" aria-live="polite">
-          <div className="doctor-chef-avatar" aria-hidden="true"></div>
+          <div className="doctor-chef-avatar" aria-hidden="true">
+            <div className="avatar-half chef-half">🍳</div>
+            <div className="avatar-half doctor-half">🩺</div>
+            <div className="avatar-hat"></div>
+          </div>
           <div>
             <p className="anim-title">Doctor Chef is preparing your plan...</p>
             <p className="anim-subtitle">Calibrating ingredients and remedy dishes</p>
@@ -146,7 +181,7 @@ function App() {
             {ingredientRecommendations.map((item) => (
               <li key={item.ingredient} className="ingredient-item">
                 <div>
-                  <strong>{item.ingredient}</strong>
+                  <strong>{withIngredientEmoji(item.ingredient)}</strong>
                   <p>{item.benefit}</p>
                 </div>
                 <span className="score-pill">{item.symptomHits} matches</span>
@@ -171,6 +206,7 @@ function App() {
               <RecipeCard
                 key={recommendation.recipe.id}
                 recommendation={recommendation}
+                recipeUrl={`${import.meta.env.BASE_URL}#/recipe/${recommendation.recipe.id}`}
               />
             ))}
           </div>

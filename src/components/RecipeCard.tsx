@@ -1,10 +1,12 @@
+import { withIngredientEmoji } from '../data/catalog'
 import type { RecipeRecommendation } from '../logic/recommendRecipes'
 
 interface RecipeCardProps {
   recommendation: RecipeRecommendation
+  recipeUrl: string
 }
 
-export function RecipeCard({ recommendation }: RecipeCardProps) {
+export function RecipeCard({ recommendation, recipeUrl }: RecipeCardProps) {
   const { recipe, matchedIngredients, matchedSymptoms, score } = recommendation
   const protocolCode = recipe.id.slice(0, 3).toUpperCase()
 
@@ -24,7 +26,7 @@ export function RecipeCard({ recommendation }: RecipeCardProps) {
         <div className="mini-chips">
           {matchedIngredients.map((ingredient) => (
             <span key={ingredient} className="mini-chip">
-              {ingredient}
+              {withIngredientEmoji(ingredient)}
             </span>
           ))}
         </div>
@@ -39,6 +41,9 @@ export function RecipeCard({ recommendation }: RecipeCardProps) {
           <li key={step}>{step}</li>
         ))}
       </ol>
+      <a className="rx-open-link" href={recipeUrl} target="_blank" rel="noreferrer">
+        Open full prescription
+      </a>
     </article>
   )
 }

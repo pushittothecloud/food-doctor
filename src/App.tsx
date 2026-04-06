@@ -128,13 +128,17 @@ function App() {
       </header>
 
       {isAnimating ? (
-        <div className="doctor-chef-animation" role="status" aria-live="polite">
-          <div className="doctor-chef-avatar" aria-hidden="true">
-            <div className="avatar-half chef-half">🍳</div>
-            <div className="avatar-half doctor-half">🩺</div>
-            <div className="avatar-hat"></div>
-          </div>
-          <div>
+        <div className="doctor-chef-overlay" role="status" aria-live="polite">
+          <div className="doctor-chef-stage">
+            <div className="doctor-chef-avatar big-avatar" aria-hidden="true">
+              <div className="avatar-half chef-half">🍳</div>
+              <div className="avatar-half doctor-half">🩺</div>
+              <div className="avatar-hat"></div>
+            </div>
+            <div className="doctor-chef-body" aria-hidden="true">
+              <span className="body-left">🧑‍🍳</span>
+              <span className="body-right">🩺</span>
+            </div>
             <p className="anim-title">Doctor Chef is preparing your plan...</p>
             <p className="anim-subtitle">Calibrating ingredients and remedy dishes</p>
           </div>

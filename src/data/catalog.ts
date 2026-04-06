@@ -106,7 +106,7 @@ export const getSymptomLabel = (symptomId: SymptomId) =>
 export const symptomIngredientMap: Record<SymptomId, IngredientMatch[]> = {
   fatigue: [
     { ingredient: 'spinach', benefit: 'iron + folate support' },
-    { ingredient: 'lentils', benefit: 'plant protein + iron' },
+    { ingredient: 'lentils', benefit: 'iron + fiber support' },
     { ingredient: 'pumpkin seeds', benefit: 'magnesium + zinc' },
     { ingredient: 'eggs', benefit: 'B-vitamin support' },
   ],
@@ -152,7 +152,7 @@ export const recipes: Recipe[] = [
   {
     id: 'golden-lentil-soup',
     name: 'Golden Lentil Recovery Soup',
-    description: 'A warm anti-inflammatory soup with ginger, turmeric, and protein-rich lentils.',
+    description: 'A warm anti-inflammatory soup with ginger, turmeric, and nourishing lentils.',
     time: '30 min',
     ingredients: ['lentils', 'turmeric', 'ginger', 'spinach', 'garlic', 'olive oil', 'lemon'],
     directions: [

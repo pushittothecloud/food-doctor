@@ -25,6 +25,9 @@ export interface Recipe {
   time: string
   ingredients: string[]
   directions: string[]
+  equipment: string[]
+  chefTips: string[]
+  servingNotes: string[]
 }
 
 export const ingredientEmojiMap: Record<string, string> = {
@@ -97,6 +100,9 @@ export const symptoms: Symptom[] = [
   },
 ]
 
+export const getSymptomLabel = (symptomId: SymptomId) =>
+  symptoms.find((symptom) => symptom.id === symptomId)?.label ?? symptomId
+
 export const symptomIngredientMap: Record<SymptomId, IngredientMatch[]> = {
   fatigue: [
     { ingredient: 'spinach', benefit: 'iron + folate support' },
@@ -154,6 +160,16 @@ export const recipes: Recipe[] = [
       'Add lentils, turmeric, and water or broth. Simmer until lentils soften.',
       'Fold in spinach and finish with lemon juice before serving.',
     ],
+    equipment: ['soup pot', 'wooden spoon', 'knife + board'],
+    chefTips: [
+      'Rinse lentils well to avoid cloudy broth.',
+      'Bloom turmeric in oil for 20 seconds before adding liquid for deeper flavor.',
+      'Finish with lemon off heat to keep brightness.',
+    ],
+    servingNotes: [
+      'Serve with a pinch of salt if dehydration is a concern.',
+      'Pair with warm tea when cold symptoms are present.',
+    ],
   },
   {
     id: 'cool-cucumber-oat-bowl',
@@ -165,6 +181,16 @@ export const recipes: Recipe[] = [
       'Cook oats with water until soft and creamy.',
       'Top with yogurt, diced cucumber, mint, and pumpkin seeds.',
       'Drizzle olive oil and add salt and pepper to taste.',
+    ],
+    equipment: ['small pot', 'mixing bowl', 'knife'],
+    chefTips: [
+      'Let oats cool slightly before adding yogurt for better texture.',
+      'Salt lightly, then re-taste after olive oil is added.',
+      'Chill 10 minutes for a more refreshing bowl.',
+    ],
+    servingNotes: [
+      'Great as a post-workout cool-down meal.',
+      'Add extra cucumber for hydration-heavy days.',
     ],
   },
   {
@@ -178,6 +204,16 @@ export const recipes: Recipe[] = [
       'Toss spinach with lemon and a little olive oil.',
       'Serve with berries and chopped almonds on top.',
     ],
+    equipment: ['non-stick pan', 'tongs', 'mixing bowl'],
+    chefTips: [
+      'Pat salmon dry before searing for better crust.',
+      'Cook salmon skin-side down first for most of the cooking time.',
+      'Toast almonds briefly for more aroma.',
+    ],
+    servingNotes: [
+      'Best served warm with room-temperature berries.',
+      'A pinch of salt and lemon zest boosts flavor without heaviness.',
+    ],
   },
   {
     id: 'stress-less-chickpea-skillet',
@@ -190,6 +226,16 @@ export const recipes: Recipe[] = [
       'Stir in chickpeas and oats with a splash of water; cook until thick.',
       'Finish with spinach and serve with sliced banana on the side.',
     ],
+    equipment: ['skillet', 'spatula', 'measuring cup'],
+    chefTips: [
+      'Mash a few chickpeas for a creamier texture.',
+      'Add water gradually to control consistency.',
+      'Fold spinach at the end to keep color vibrant.',
+    ],
+    servingNotes: [
+      'Works well as lunch or early dinner.',
+      'Add a squeeze of lemon if flavors feel flat.',
+    ],
   },
   {
     id: 'sleepy-night-jar',
@@ -201,6 +247,16 @@ export const recipes: Recipe[] = [
       'Mix oats and yogurt in a jar and chill for at least 30 minutes.',
       'Top with kiwi, tart cherry, banana, and chopped almonds.',
       'Enjoy in the evening or as a calming breakfast.',
+    ],
+    equipment: ['lidded jar', 'spoon', 'small knife'],
+    chefTips: [
+      'Use rolled oats for best overnight texture.',
+      'Stir once after 10 minutes to prevent clumping.',
+      'Keep tart cherry on top to preserve color and bite.',
+    ],
+    servingNotes: [
+      'Ideal 60 to 90 minutes before bedtime.',
+      'Can be made ahead for two nights.',
     ],
   },
 ]

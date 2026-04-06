@@ -1,4 +1,8 @@
-import { withIngredientEmoji } from '../data/catalog'
+import {
+  getSymptomLabel,
+  symptomIngredientMap,
+  withIngredientEmoji,
+} from '../data/catalog'
 import type { RecipeRecommendation } from '../logic/recommendRecipes'
 
 interface RecipeCardProps {
@@ -9,6 +13,17 @@ interface RecipeCardProps {
 export function RecipeCard({ recommendation, recipeUrl }: RecipeCardProps) {
   const { recipe, matchedIngredients, matchedSymptoms, score } = recommendation
   const protocolCode = recipe.id.slice(0, 3).toUpperCase()
+  const matchedSymptomLabelText = matchedSymptoms
+    .map((symptomId) => getSymptomLabel(symptomId))
+    .join('\n')
+
+  const ingredientTooltip = (ingredient: string) =>
+    matchedSymptoms
+      .filter((symptomId) =>
+        symptomIngredientMap[symptomId].some((item) => item.ingredient === ingredient),
+      )
+      .map((symptomId) => getSymptomLabel(symptomId))
+      .join('\n')
 
   return (
     <article className="recipe-card">
@@ -25,7 +40,11 @@ export function RecipeCard({ recommendation, recipeUrl }: RecipeCardProps) {
         <span className="meta-label">Prescribed ingredients</span>
         <div className="mini-chips">
           {matchedIngredients.map((ingredient) => (
-            <span key={ingredient} className="mini-chip">
+            <span
+              key={ingredient}
+              className="mini-chip"
+              title={`Supports:\n${ingredientTooltip(ingredient) || 'General support'}`}
+            >
               {withIngredientEmoji(ingredient)}
             </span>
           ))}
@@ -33,7 +52,12 @@ export function RecipeCard({ recommendation, recipeUrl }: RecipeCardProps) {
       </div>
       <div className="meta-row">
         <span className="meta-label">Symptoms covered</span>
-        <span className="symptom-count">{matchedSymptoms.length}</span>
+        <span
+          className="symptom-count"
+          title={matchedSymptomLabelText || 'No symptoms mapped'}
+        >
+          {matchedSymptoms.length}
+        </span>
       </div>
       <p className="meta-label">Preparation protocol</p>
       <ol className="directions">

@@ -2,7 +2,13 @@ import { useEffect, useMemo, useState } from 'react'
 import { RecipeDetailPage } from './components/RecipeDetailPage'
 import { RecipeCard } from './components/RecipeCard'
 import { SymptomPicker } from './components/SymptomPicker'
-import { recipes, symptoms, type SymptomId, withIngredientEmoji } from './data/catalog'
+import {
+  getSymptomLabel,
+  recipes,
+  symptoms,
+  type SymptomId,
+  withIngredientEmoji,
+} from './data/catalog'
 import {
   getIngredientRecommendations,
   getRecipeRecommendations,
@@ -207,7 +213,13 @@ function App() {
             {ingredientRecommendations.map((item) => (
               <li key={item.ingredient} className="ingredient-item">
                 <div>
-                  <strong>{withIngredientEmoji(item.ingredient)}</strong>
+                  <strong
+                    title={`Supports:\n${item.relatedSymptoms
+                      .map((symptomId) => getSymptomLabel(symptomId))
+                      .join('\n')}`}
+                  >
+                    {withIngredientEmoji(item.ingredient)}
+                  </strong>
                   <p>{item.benefit}</p>
                 </div>
                 <span className="score-pill">{item.symptomHits} matches</span>

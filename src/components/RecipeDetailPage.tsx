@@ -37,6 +37,15 @@ export function RecipeDetailPage({ recipe }: RecipeDetailPageProps) {
           </ul>
         </section>
 
+        <section className="meta-row">
+          <span className="meta-label">Equipment</span>
+          <ul className="detail-ingredient-list">
+            {recipe.equipment.map((tool) => (
+              <li key={tool}>{tool}</li>
+            ))}
+          </ul>
+        </section>
+
         <section>
           <p className="meta-label">Preparation protocol</p>
           <ol className="directions">
@@ -44,6 +53,24 @@ export function RecipeDetailPage({ recipe }: RecipeDetailPageProps) {
               <li key={step}>{step}</li>
             ))}
           </ol>
+        </section>
+
+        <section className="meta-row">
+          <span className="meta-label">Chef tips</span>
+          <ul className="detail-ingredient-list">
+            {recipe.chefTips.map((tip) => (
+              <li key={tip}>{tip}</li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="meta-row">
+          <span className="meta-label">Serving notes</span>
+          <ul className="detail-ingredient-list">
+            {recipe.servingNotes.map((note) => (
+              <li key={note}>{note}</li>
+            ))}
+          </ul>
         </section>
 
         <a className="rx-open-link" href={`${import.meta.env.BASE_URL}#/`}>

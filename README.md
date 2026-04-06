@@ -20,6 +20,8 @@ npm run dev
 npm run build
 ```
 
+For GitHub Pages at `https://pushittothecloud.github.io/food-doctor/`, the Vite base path is set in `vite.config.ts` so built assets resolve correctly.
+
 ## How Matching Works
 
 1. Symptom-to-ingredient mappings are defined in `src/data/catalog.ts`.

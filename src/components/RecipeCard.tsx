@@ -6,17 +6,21 @@ interface RecipeCardProps {
 
 export function RecipeCard({ recommendation }: RecipeCardProps) {
   const { recipe, matchedIngredients, matchedSymptoms, score } = recommendation
+  const protocolCode = recipe.id.slice(0, 3).toUpperCase()
 
   return (
     <article className="recipe-card">
       <div className="recipe-top">
-        <h3>{recipe.name}</h3>
-        <span className="score-pill">Match score {score}</span>
+        <div>
+          <p className="rx-line">Rx: {protocolCode}</p>
+          <h3>{recipe.name}</h3>
+        </div>
+        <span className="score-pill">Clinical fit {score}</span>
       </div>
       <p className="recipe-description">{recipe.description}</p>
-      <p className="recipe-time">Time: {recipe.time}</p>
+      <p className="recipe-time">Kitchen time: {recipe.time}</p>
       <div className="meta-row">
-        <span className="meta-label">Matched ingredients</span>
+        <span className="meta-label">Prescribed ingredients</span>
         <div className="mini-chips">
           {matchedIngredients.map((ingredient) => (
             <span key={ingredient} className="mini-chip">
@@ -26,9 +30,10 @@ export function RecipeCard({ recommendation }: RecipeCardProps) {
         </div>
       </div>
       <div className="meta-row">
-        <span className="meta-label">Covers symptoms</span>
+        <span className="meta-label">Symptoms covered</span>
         <span className="symptom-count">{matchedSymptoms.length}</span>
       </div>
+      <p className="meta-label">Preparation protocol</p>
       <ol className="directions">
         {recipe.directions.map((step) => (
           <li key={step}>{step}</li>

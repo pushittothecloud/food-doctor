@@ -13,8 +13,8 @@
   border-radius: 26px;
   padding: clamp(1.4rem, 2vw, 2rem);
   background:
-    radial-gradient(circle at 100% 0%, rgba(255, 209, 102, 0.35), transparent 45%),
-    radial-gradient(circle at 0% 100%, rgba(76, 195, 217, 0.2), transparent 48%),
+    radial-gradient(circle at 100% 0%, rgba(15, 109, 143, 0.18), transparent 45%),
+    radial-gradient(circle at 0% 100%, rgba(245, 159, 58, 0.2), transparent 48%),
     var(--panel-bg);
   box-shadow: var(--soft-shadow);
   overflow: hidden;
@@ -28,7 +28,7 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background: rgba(247, 127, 0, 0.12);
+  background: rgba(15, 109, 143, 0.1);
 }
 
 .eyebrow {
@@ -42,6 +42,31 @@
 
 .hero-copy {
   max-width: 52ch;
+}
+
+.hero-note {
+  margin-top: 0.9rem;
+  padding: 0.7rem 0.8rem;
+  border-radius: 12px;
+  border: 1px dashed var(--panel-border);
+  display: inline-flex;
+  gap: 0.65rem;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.hero-note p {
+  font-size: 0.87rem;
+}
+
+.rx-tag {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  border-radius: 999px;
+  color: #ffffff;
+  background: var(--accent-strong);
+  padding: 0.22rem 0.55rem;
 }
 
 .panel {
@@ -85,7 +110,7 @@
 
 .symptom-chip.is-selected {
   border-color: var(--accent-strong);
-  background: linear-gradient(160deg, rgba(247, 127, 0, 0.12), rgba(76, 195, 217, 0.09));
+  background: linear-gradient(160deg, rgba(15, 109, 143, 0.14), rgba(245, 159, 58, 0.1));
 }
 
 .symptom-title {
@@ -125,8 +150,8 @@
 }
 
 .score-pill {
-  background: rgba(76, 195, 217, 0.18);
-  color: #005f6b;
+  background: rgba(15, 109, 143, 0.17);
+  color: #0c5a76;
   border-radius: 999px;
   padding: 0.25rem 0.6rem;
   font-size: 0.78rem;
@@ -163,6 +188,15 @@
   font-size: 1.1rem;
 }
 
+.rx-line {
+  margin: 0;
+  color: var(--accent-strong);
+  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
 .recipe-description,
 .recipe-time {
   margin: 0;
@@ -190,11 +224,11 @@
 
 .mini-chip,
 .symptom-count {
-  background: rgba(247, 127, 0, 0.15);
+  background: rgba(245, 159, 58, 0.2);
   border-radius: 999px;
   padding: 0.2rem 0.55rem;
   font-size: 0.75rem;
-  color: #8f4100;
+  color: #8a4f0f;
   font-weight: 600;
   width: fit-content;
 }
@@ -211,7 +245,7 @@
   margin: 0;
   padding: 0.8rem;
   border-radius: 12px;
-  background: rgba(255, 209, 102, 0.18);
+  background: rgba(15, 109, 143, 0.12);
 }
 
 @keyframes rise {

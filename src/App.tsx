@@ -32,12 +32,16 @@ function App() {
   return (
     <main className="app-shell">
       <header className="hero">
-        <p className="eyebrow">Food Doctor</p>
-        <h1>From symptoms to smart meal ideas.</h1>
+        <p className="eyebrow">Doctor Chef Protocol</p>
+        <h1>Clinical logic, kitchen-ready prescriptions.</h1>
         <p className="hero-copy">
-          Pick what you feel, get targeted ingredients, and discover recipes that
-          match multiple needs at once.
+          Log symptoms like a quick consult, then receive food prescriptions and
+          remedy dishes designed for overlap across multiple needs.
         </p>
+        <div className="hero-note">
+          <span className="rx-tag">RX MODE</span>
+          <p>Each suggested dish is scored by therapeutic ingredient coverage.</p>
+        </div>
       </header>
 
       <SymptomPicker
@@ -48,9 +52,9 @@ function App() {
 
       <section className="panel">
         <div className="panel-heading">
-          <h2>Ingredient focus</h2>
+          <h2>Prescription ingredients</h2>
           <p>
-            Ingredients are ranked by how many selected symptoms they support.
+            Ingredients are ranked by how many selected symptoms they can support.
           </p>
         </div>
         {ingredientRecommendations.length === 0 ? (
@@ -74,8 +78,8 @@ function App() {
 
       <section className="panel">
         <div className="panel-heading">
-          <h2>Recipe suggestions</h2>
-          <p>Recipes are scored by ingredient overlap and symptom coverage.</p>
+          <h2>Remedy dish suggestions</h2>
+          <p>Dishes are scored by ingredient overlap and symptom coverage.</p>
         </div>
         {recipeRecommendations.length === 0 ? (
           <p className="empty-state">

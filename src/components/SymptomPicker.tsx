@@ -14,8 +14,8 @@ export function SymptomPicker({
   return (
     <section className="panel">
       <div className="panel-heading">
-        <h2>Select symptoms</h2>
-        <p>Choose one or more symptoms to generate ingredient and recipe suggestions.</p>
+        <h2>Intake symptoms</h2>
+        <p>Choose one or more symptoms to generate targeted food prescriptions.</p>
       </div>
       <div className="chip-grid">
         {symptoms.map((symptom) => {

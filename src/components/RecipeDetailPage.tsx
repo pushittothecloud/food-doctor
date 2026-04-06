@@ -29,7 +29,7 @@ export function RecipeDetailPage({ recipe }: RecipeDetailPageProps) {
         <p className="recipe-time">Kitchen time: {recipe.time}</p>
 
         <section className="meta-row">
-          <span className="meta-label">Ingredients</span>
+          <span className="meta-label">Prescribed ingredients</span>
           <ul className="detail-ingredient-list">
             {recipe.ingredients.map((ingredient) => (
               <li key={ingredient}>{withIngredientEmoji(ingredient)}</li>

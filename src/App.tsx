@@ -141,6 +141,15 @@ function App() {
             <div className="doctor-chef-avatar big-avatar" aria-hidden="true">
               <div className="avatar-half chef-half"></div>
               <div className="avatar-half doctor-half"></div>
+              <div className="avatar-features">
+                <span className="eye eye-left"></span>
+                <span className="eye eye-right"></span>
+                <span className="brow brow-left"></span>
+                <span className="brow brow-right"></span>
+                <span className="nose"></span>
+                <span className="smile"></span>
+                <span className="split-beard"></span>
+              </div>
               <div className="avatar-hat"></div>
             </div>
             <div className="doctor-chef-body" aria-hidden="true">

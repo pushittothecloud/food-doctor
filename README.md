@@ -22,6 +22,8 @@ npm run build
 
 For GitHub Pages at `https://pushittothecloud.github.io/food-doctor/`, the Vite base path is set in `vite.config.ts` so built assets resolve correctly.
 
+Deployment is automated by GitHub Actions in `.github/workflows/deploy.yml`, which publishes the `dist` folder to the `gh-pages` branch. In repo Settings > Pages, set Source to `Deploy from a branch`, Branch to `gh-pages`, and folder to `/(root)`.
+
 ## How Matching Works
 
 1. Symptom-to-ingredient mappings are defined in `src/data/catalog.ts`.
